@@ -1,0 +1,1834 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Red-Black Tree, Blog，coding">
+    <meta name="description" content="言之命至">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Red-Black Tree | Allen 的 blog</title>
+    <link rel="icon" type="image/png" href="/BlogNet/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/css/my.css">
+
+    <script src="/BlogNet/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/BlogNet/" class="waves-effect waves-light">
+                    
+                    <img src="/BlogNet/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Allen 的 blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/BlogNet/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Allen 的 blog</div>
+        <div class="logo-desc">
+            
+            言之命至
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Red-Black Tree</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/BlogNet/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/BlogNet/tags/%E9%AB%98%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">高阶数据结构</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-09-03
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/BlogNet/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205040918814.jpg" alt="BingWallpaper27"></p>
+<p>[toc]</p>
+<h1 id="RB-tree"><a href="#RB-tree" class="headerlink" title="RB-tree"></a>RB-tree</h1><p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205200902972.png" alt="image-20220520090154798"></p>
+<h2 id="0-Intro"><a href="#0-Intro" class="headerlink" title="0.Intro"></a>0.Intro</h2><p><strong>红黑树</strong>是一种自平衡二叉搜索树。每个节点存储一个表示“颜色”（“红色”或“黑色”）的额外位，用于确保树在插入和删除期间保持平衡。当树被修改时，新树被重新排列并“重新绘制”以恢复限制树在最坏情况下可能变得多么不平衡的着色属性。这些属性被设计成可以有效地执行这种重新排列和重新着色。</p>
+<blockquote>
+<p>From <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree">https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree</a></p>
+</blockquote>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205042105325.png" alt="image-20220504210510276"></p>
+<h2 id="1-Red-Black-Tree"><a href="#1-Red-Black-Tree" class="headerlink" title="1. Red-Black Tree"></a>1. Red-Black Tree</h2><p>通过对任何一条从根到叶子的路径上各个结点着色方式的限制，==红黑树确保没有一条路径会比其他路径长出两倍==，因而是接近平衡的。接近平衡其实比平衡更好一点，因为相对平衡对于计算机来说实际上差别不大（对计算机来说其实logN和2logN差别不是很大），但是严格平衡是通过不断旋转来提高效率的，基于这样的原因，红黑树效率不必AVL差，但是反而旋转更少，因此总体效率更优，因此现在使用红黑树更多一点，而不是AVL树</p>
+<h3 id="1-1-红黑树的性质"><a href="#1-1-红黑树的性质" class="headerlink" title="1.1  红黑树的性质"></a>1.1  红黑树的性质</h3><p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 每个结点不是红色就是黑色<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 根节点是黑色的<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 如果一个节点是红色的，则它的两个孩子结点是黑色的(<strong>没有连续的红色节点</strong>)<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点（<strong>每条路上包含相同数量黑色节点</strong>）</p>
+<p>每个叶子结点都是黑色的(==此处的叶子结点指的是空结点/NIL==)</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205051231892.png" alt="image-20220505123105834"></p>
+<h3 id="1-2-红黑树推论"><a href="#1-2-红黑树推论" class="headerlink" title="1.2 红黑树推论"></a>1.2 红黑树推论</h3><p><span class="github-emoji"><span>🐉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f409.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 路径：<br>    <span class="github-emoji"><span>⚡</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>最短路径：全部由黑色节点构成<br>    <span class="github-emoji"><span>⚡</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>最长路径：一黑一红，黑色节点数量等于红色节点<br><span class="github-emoji"><span>🐉</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f409.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 假设黑色节点有N个：<br>    <span class="github-emoji"><span>⚡</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>最短路径长度：logN<br>    <span class="github-emoji"><span>⚡</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>最长路径长度：2logN</p>
+<h2 id="2-实现红黑树"><a href="#2-实现红黑树" class="headerlink" title="2. 实现红黑树"></a>2. 实现红黑树</h2><h3 id="2-0-红黑树节点结构"><a href="#2-0-红黑树节点结构" class="headerlink" title="2.0 红黑树节点结构"></a>2.0 红黑树节点结构</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">enum</span> <span class="token class-name">Color</span>
+<span class="token punctuation">{</span>
+    RED<span class="token punctuation">,</span>
+    BLACK<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">K</span><span class="token punctuation">,</span><span class="token keyword">class</span> <span class="token class-name">V</span><span class="token operator">&gt;</span>
+<span class="token keyword">struct</span> <span class="token class-name">RBTreeNode</span>
+<span class="token punctuation">{</span>
+    RBTreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">&gt;</span><span class="token operator">*</span> _left<span class="token punctuation">;</span>
+    RBTreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">&gt;</span><span class="token operator">*</span> _right<span class="token punctuation">;</span>
+    RBTreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">&gt;</span><span class="token operator">*</span> _parent<span class="token punctuation">;</span>
+    pair<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">&gt;</span> _kv<span class="token punctuation">;</span>
+    Color _col<span class="token punctuation">;</span>
+
+    <span class="token function">RBTreeNode</span><span class="token punctuation">(</span><span class="token keyword">const</span> pair<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token operator">&amp;</span>  kv<span class="token punctuation">)</span>
+    <span class="token operator">:</span><span class="token function">_left</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">,</span><span class="token function">_right</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">,</span><span class="token function">_parent</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">,</span><span class="token function">_kv</span><span class="token punctuation">(</span>kv<span class="token punctuation">)</span>
+    <span class="token punctuation">,</span><span class="token function">_col</span><span class="token punctuation">(</span>RED<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这时候我们有一个问题，为什么要将节点的默认颜色给成红色的？</p>
+<p>黑的好还是红的好?</p>
+<blockquote>
+<p>插入红的会破坏规则：</p>
+<p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 如果一个节点是红色的，则它的两个孩子结点是黑色的(<strong>没有连续的红色节点</strong>)</p>
+<p>插入黑的会破坏规则：</p>
+<p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点（<strong>每条路上包含相同数量黑色节点</strong>）</p>
+</blockquote>
+<p>我们选择消耗低的，还是插入默认红的比较好</p>
+<h3 id="2-1-构造函数"><a href="#2-1-构造函数" class="headerlink" title="2.1 构造函数"></a>2.1 构造函数</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">RBTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">:</span><span class="token function">_root</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-2-Insert"><a href="#2-2-Insert" class="headerlink" title="2.2 Insert"></a>2.2 Insert</h3><h4 id="2-2-0-处理搜索部分"><a href="#2-2-0-处理搜索部分" class="headerlink" title="2.2.0 处理搜索部分"></a>2.2.0 处理搜索部分</h4><p>搜索树部分类似于AVL和BSTree的插入逻辑</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//空树</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    _root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    _root<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span><span class="token comment">//根必须是黑的</span>
+    <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>_root<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+
+Node<span class="token operator">*</span> parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+Node<span class="token operator">*</span> cur <span class="token operator">=</span> _root<span class="token punctuation">;</span>
+
+<span class="token comment">//1. 找适当的空位置</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&lt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        parent <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&lt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        parent <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">{</span><span class="token comment">//重复</span>
+        <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//2. cur走到空 可以链接</span>
+Node<span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+newnode<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first <span class="token operator">&lt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    parent<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+    newnode<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+    parent<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+    newnode<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+cur <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+<span class="token comment">//处理</span>
+    
+    <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>kv<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>关键是处理红黑节点</p>
+<h4 id="2-2-1-处理红黑节点"><a href="#2-2-1-处理红黑节点" class="headerlink" title="2.2.1 处理红黑节点"></a>2.2.1 处理红黑节点</h4><p>因为新节点的默认颜色是红色，因此：如果其双亲节点的颜色是黑色，没有违反红黑树任何性质，则不<br>需要调整；但当新插入节点的双亲节点颜色为红色时，就违反了性质三不能有连在一起的红色节点，此<br>时需要对红黑树分情况来讨论：</p>
+<table>
+<thead>
+<tr>
+<th>parent.color</th>
+<th>条件</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BLACK</td>
+<td>不需要调整</td>
+<td>插入完成</td>
+</tr>
+<tr>
+<td>RED</td>
+<td>违反规则3</td>
+<td>需要处理</td>
+</tr>
+</tbody></table>
+<p>如果parent节点是红的，那么就会出现多种情况，需要处理，情况1可以通变色处理，但是情况2+3则因为<strong>最长路径已经超过最短路径的两倍所以无法变色解决，需要旋转</strong></p>
+<p>下面的图中我们约定:cur为当前节点，p为父节点，g为祖父节点，u为叔叔节点</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>cur</th>
+<th>parent</th>
+<th>grandparent</th>
+<th>uncle</th>
+<th>处理方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>情况一：<br>叔叔存在且为红</td>
+<td>RED</td>
+<td>RED</td>
+<td>BLACK</td>
+<td>exist &amp;&amp; RED</td>
+<td>pu变黑，g变红，继续往上走</td>
+</tr>
+<tr>
+<td>情况二:<br>叔叔不存在或为黑（直线）</td>
+<td>RED</td>
+<td>RED</td>
+<td>BLACK</td>
+<td>!exist || <br>exist &amp;&amp; BLACK</td>
+<td>单旋转+变色</td>
+</tr>
+<tr>
+<td>情况三;<br>叔叔不存在或为黑（折线）</td>
+<td>RED</td>
+<td>RED</td>
+<td>BLACK</td>
+<td>!exist ||<br>exist &amp;&amp; BLACK</td>
+<td>双旋转+变色</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-2-Situation1"><a href="#2-2-2-Situation1" class="headerlink" title="2.2.2 Situation1"></a>2.2.2 Situation1</h4><p><strong><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 情况一: cur为红，p为红，g为黑，u存在且为红</strong></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205051325666.png" alt="image-20220505132556579"></p>
+<table>
+<thead>
+<tr>
+<th>具象图</th>
+<th>描述</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>具象图1：</td>
+<td>g已经到顶了</td>
+<td>pu变黑，g变红</td>
+</tr>
+<tr>
+<td>具象图2：</td>
+<td>符合具象图1但是修改完其他节点不符合</td>
+<td>不断执行情况1，直到parent为空时，p存在且为黑，或者p不存在停止（把根变黑）</td>
+</tr>
+</tbody></table>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205051326419.png" alt="image-20220505132610350"></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205051351735.png" alt="image-20220505135120634"></p>
+<h4 id="2-2-3-Situation2"><a href="#2-2-3-Situation2" class="headerlink" title="2.2.3 Situation2"></a>2.2.3 Situation2</h4><p><strong><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 情况二: cur为红，p为红，g为黑，u不存在/u为黑</strong><br>情况二中，无非是还会出现一种情况是左旋，但是说到底都是单旋转中的一种,关键在于</p>
+<table>
+<thead>
+<tr>
+<th>parent/grandparent/cur关系</th>
+<th>旋转操作</th>
+<th>变色操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p为g的左孩子，cur为p的左孩子</td>
+<td>右单旋转</td>
+<td>p、g变色–p变黑，g变红</td>
+</tr>
+<tr>
+<td>p为g的右孩子，cur为p的右孩子</td>
+<td>左单旋转</td>
+<td>p、g变色–p变黑，g变红</td>
+</tr>
+</tbody></table>
+<p><font><span class="github-emoji"><span>⚡</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 为什么不能直接染色?</font></p>
+<p>看到下图可能会有一些疑问：为什么我不能把p变黑，g变红，简单来就可以了，还要搞什么旋转呢？这是因为首先原来插入之前是一棵红黑树，那么右路如果有uncle就是需要整一条右路上要两个黑节点才能满足规则五，如果没有uncle节点就要满足至少有一个黑，所以说如果直接改变颜色，那么会导致要么右路只有一个黑节点，要么就是右路干脆没有黑节点，所以说一定要采取旋转方式，才能满足规则五</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205061006661.png"></p>
+<table>
+<thead>
+<tr>
+<th>具象图（以右单旋为例）</th>
+<th>描述</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>具象图1：</td>
+<td>`uncle  !exist</td>
+<td></td>
+</tr>
+<tr>
+<td>具象图2：</td>
+<td>符合情况一且处理之后产生情况二</td>
+<td>处理情况一+右单旋+p变黑，g变红</td>
+</tr>
+</tbody></table>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205060953867.png" alt="image-20220506095327691"></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205061035548.png" alt="image-20220506103556352"></p>
+<h4 id="2-2-4-Situation3"><a href="#2-2-4-Situation3" class="headerlink" title="2.2.4 Situation3"></a>2.2.4 Situation3</h4><p><strong><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 情况三: cur为红，p为红，g为黑，u不存在/u为黑</strong></p>
+<p>情况三看上去好像和情况二很像，其实差别在于情况三的结构，同时他是一个双旋</p>
+<table>
+<thead>
+<tr>
+<th>parent/grandparent/cur关系</th>
+<th>旋转操作1</th>
+<th>旋转操作2</th>
+<th>变色操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p为g的左孩子，cur为p的右孩子</td>
+<td>左单旋转</td>
+<td>右单旋转</td>
+<td>cur、g变色–cur变黑，g变红</td>
+</tr>
+<tr>
+<td>p为g的右孩子，cur为p的左孩子</td>
+<td>右单旋转</td>
+<td>左单旋转</td>
+<td>cur、g变色–cur变黑，g变红</td>
+</tr>
+</tbody></table>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205071403059.png" alt="image-20220507140351911"></p>
+<table>
+<thead>
+<tr>
+<th>具象图（以右单旋为例）</th>
+<th>描述</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>具象图1：</td>
+<td>`uncle  !exist</td>
+<td></td>
+</tr>
+<tr>
+<td>具象图2：</td>
+<td>符合情况一且处理之后产生情况三</td>
+<td>处理情况一+左单旋+右单旋+cur变黑，g变红</td>
+</tr>
+</tbody></table>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205061039461.png" alt="image-20220506103931331"></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205061104810.png" alt="image-20220506110459705"></p>
+<h4 id="2-2-5-分类讨论总结"><a href="#2-2-5-分类讨论总结" class="headerlink" title="2.2.5 分类讨论总结"></a>2.2.5 分类讨论总结</h4><p>插入一个新节点，新节点必是红的</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205072102026.png" alt="image-20220507210143404"></p>
+<h4 id="2-2-6-实现插入"><a href="#2-2-6-实现插入" class="headerlink" title="2.2.6 实现插入"></a>2.2.6 实现插入</h4><h5 id="2-2-6-1-插入本体"><a href="#2-2-6-1-插入本体" class="headerlink" title="2.2.6.1 插入本体"></a>2.2.6.1 插入本体</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//插入</span>
+pair<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">bool</span><span class="token operator">&gt;</span> <span class="token function">Insert</span><span class="token punctuation">(</span><span class="token keyword">const</span> pair<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">&gt;</span><span class="token operator">&amp;</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//空树</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        _root<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span><span class="token comment">//根必须是黑的</span>
+        <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>_root<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> 
+
+    Node<span class="token operator">*</span> parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+    Node<span class="token operator">*</span> cur <span class="token operator">=</span> _root<span class="token punctuation">;</span>
+
+    <span class="token comment">//1. 找适当的空位置</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&lt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            parent <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&gt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            parent <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span><span class="token comment">//重复</span>
+            <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//2. cur走到空 可以链接</span>
+    Node<span class="token operator">*</span> newnode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newnode<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first <span class="token operator">&lt;</span>data<span class="token punctuation">.</span>first<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        parent<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+        newnode<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">{</span>
+        parent<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+        newnode<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    cur <span class="token operator">=</span> newnode<span class="token punctuation">;</span>
+
+    <span class="token comment">//3.判断处理条件</span>
+    <span class="token comment">//如果父亲存在，且颜色为红色就需要处理</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>parent <span class="token operator">&amp;&amp;</span> parent<span class="token operator">-&gt;</span>_col <span class="token operator">==</span> RED<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>	
+        <span class="token comment">//抓住叔叔是关键</span>
+        Node<span class="token operator">*</span> grandfather <span class="token operator">=</span> parent<span class="token operator">-&gt;</span>_parent<span class="token punctuation">;</span>
+    <span class="token comment">//a. 首先父亲在祖父左边的情况</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token operator">==</span>grandfather<span class="token operator">-&gt;</span>_left<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Node<span class="token operator">*</span> uncle <span class="token operator">=</span> grandfather<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+            <span class="token comment">//情况1：uncle 存在且为红</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>uncle <span class="token operator">&amp;&amp;</span> uncle<span class="token operator">-&gt;</span>_col <span class="token operator">==</span>RED<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                parent<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> uncle<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                <span class="token comment">//继续往上处理</span>
+                cur <span class="token operator">=</span> grandfather<span class="token punctuation">;</span>
+                parent <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_parent<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//情况2+3 uncle不存在或者uncle存在且为黑</span>
+            <span class="token keyword">else</span><span class="token comment">//此时变色无法处理</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment">//情况2：单旋</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">==</span>parent<span class="token operator">-&gt;</span>_left<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>   <span class="token comment">//1. 右单旋</span>
+                    <span class="token function">_Rotate_R</span><span class="token punctuation">(</span>grandfather<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">//2. 变色</span>
+                    grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                    parent<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> 
+                <span class="token keyword">else</span><span class="token comment">//情况3：双旋</span>
+                <span class="token punctuation">{</span>
+                    <span class="token function">_Rotate_L</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">_Rotate_R</span><span class="token punctuation">(</span>grandfather<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    cur<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                    grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span><span class="token comment">//根是黑的了，不会往上影响直接break</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> 
+
+        <span class="token comment">//b. 首先父亲在祖父左边的情况</span>
+        <span class="token keyword">else</span><span class="token comment">//parent == grandfather-&gt;_right</span>
+        <span class="token punctuation">{</span>
+            Node<span class="token operator">*</span> uncle <span class="token operator">=</span> grandfather<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+            <span class="token comment">//情况1：uncle 存在且为红 </span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>uncle <span class="token operator">&amp;&amp;</span> uncle<span class="token operator">-&gt;</span>_col<span class="token operator">==</span>RED<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                uncle<span class="token operator">-&gt;</span>_col<span class="token operator">=</span>parent<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                <span class="token comment">//继续往上递归</span>
+                cur <span class="token operator">=</span> grandfather<span class="token punctuation">;</span>
+                parent <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_parent<span class="token punctuation">;</span><span class="token comment">//这个肯定有父亲</span>
+            <span class="token punctuation">}</span> 
+            <span class="token comment">//情况 2+3： uncle不存在或为黑</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token operator">-&gt;</span>_right<span class="token operator">==</span>cur<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token function">_Rotate_L</span><span class="token punctuation">(</span>grandfather<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    parent<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                    grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> 
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token function">_Rotate_R</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">_Rotate_L</span><span class="token punctuation">(</span>grandfather<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    cur<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+                    grandfather<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> RED<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//默认修改根节点为黑色</span>
+    _root<span class="token operator">-&gt;</span>_col <span class="token operator">=</span> BLACK<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">make_pair</span><span class="token punctuation">(</span>newnode<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="2-2-6-2-旋转函数"><a href="#2-2-6-2-旋转函数" class="headerlink" title="2.2.6.2 旋转函数"></a>2.2.6.2 旋转函数</h5><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">_Rotate_R</span><span class="token punctuation">(</span>Node<span class="token operator">*</span> parent<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			Node<span class="token operator">*</span> subL <span class="token operator">=</span> parent<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+			Node<span class="token operator">*</span> subLR <span class="token operator">=</span> subL<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+			<span class="token comment">//1.旋转</span>
+			parent<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> subLR<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>subLR<span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>
+				subLR<span class="token operator">-&gt;</span>_parent<span class="token operator">=</span>parent<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			subL<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+			Node<span class="token operator">*</span> grandparent <span class="token operator">=</span> parent<span class="token operator">-&gt;</span>_parent<span class="token punctuation">;</span><span class="token comment">//记录爷爷</span>
+			parent<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> subL<span class="token punctuation">;</span>
+
+			<span class="token comment">//2. 修改父子关系</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">==</span> _root<span class="token punctuation">)</span>
+			<span class="token punctuation">{</span><span class="token comment">//原来的父亲做了根节点</span>
+				_root <span class="token operator">=</span> subL<span class="token punctuation">;</span>
+				_root<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span>
+			<span class="token punctuation">{</span><span class="token comment">//修改爷爷和父亲链接</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>grandparent<span class="token operator">-&gt;</span>_left<span class="token operator">==</span>parent<span class="token punctuation">)</span>
+					grandparent<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> subL<span class="token punctuation">;</span>
+				<span class="token keyword">else</span>
+					grandparent<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> subL<span class="token punctuation">;</span>
+				subL<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> grandparent<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">void</span> <span class="token function">_Rotate_L</span><span class="token punctuation">(</span>Node<span class="token operator">*</span> parent<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			Node<span class="token operator">*</span> subR <span class="token operator">=</span> parent<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+			Node<span class="token operator">*</span> subRL <span class="token operator">=</span> subR<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+			<span class="token comment">//1. 旋转</span>
+			parent<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> subRL<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>subRL<span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>
+				subRL<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			subR<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+			Node<span class="token operator">*</span> grandparent <span class="token operator">=</span> parent<span class="token operator">-&gt;</span>_parent<span class="token punctuation">;</span>
+			parent<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> subR<span class="token punctuation">;</span>
+
+			<span class="token comment">//2. 修改父子关系</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">==</span>parent<span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>
+				_root <span class="token operator">=</span> subR<span class="token punctuation">;</span>
+				_root<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span> 
+			<span class="token keyword">else</span>
+			<span class="token punctuation">{</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>grandparent<span class="token operator">-&gt;</span>_left <span class="token operator">==</span> parent<span class="token punctuation">)</span>
+					grandparent<span class="token operator">-&gt;</span>_left <span class="token operator">=</span> subR<span class="token punctuation">;</span>
+				<span class="token keyword">else</span>
+					grandparent<span class="token operator">-&gt;</span>_right <span class="token operator">=</span> subR<span class="token punctuation">;</span>
+				subR<span class="token operator">-&gt;</span>_parent <span class="token operator">=</span> grandparent<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-3-Erase"><a href="#2-3-Erase" class="headerlink" title="2.3 Erase"></a>2.3 Erase</h3><p>和AVL树类似，红黑树的删除只谈谈思想</p>
+<ul>
+<li>删除节点一定是左为空或者右为空，然后让父亲链接自己的孩子	<ul>
+<li><p>删除的是红色节点，直接就没有什么问题</p>
+</li>
+<li><p>删除的是黑色节点，可能导致连续的红节点，或者一条路径上少了一个黑节点</p>
+<ul>
+<li><p>后继还有红节点，变色成黑的</p>
+</li>
+<li><p>后继没有红节点可能还要旋转</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>具体有很多种情况可以参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fornever/archive/2011/12/02/2270692.html">https://www.cnblogs.com/fornever/archive/2011/12/02/2270692.html</a></p>
+<h3 id="2-4-Find"><a href="#2-4-Find" class="headerlink" title="2.4 Find"></a>2.4 Find</h3><p>和搜索树如出一辙</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Node<span class="token operator">*</span> <span class="token function">Find</span><span class="token punctuation">(</span><span class="token keyword">const</span> K<span class="token operator">&amp;</span> key<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Node<span class="token operator">*</span> cur <span class="token operator">=</span> _root<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&gt;</span>key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token operator">-&gt;</span>_kv<span class="token punctuation">.</span>first<span class="token operator">&lt;</span>key<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-&gt;</span>_right<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> cur<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-5-析构函数"><a href="#2-5-析构函数" class="headerlink" title="2.5 析构函数"></a>2.5 析构函数</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">_Destroy</span><span class="token punctuation">(</span>Node<span class="token operator">*</span> root<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">_Destroy</span><span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">_Destroy</span><span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">delete</span> root<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//析构</span>
+<span class="token operator">~</span><span class="token function">AVLTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">_Destroy</span><span class="token punctuation">(</span>_root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    _root <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-6-拷贝构造和赋值运算符"><a href="#2-6-拷贝构造和赋值运算符" class="headerlink" title="2.6 拷贝构造和赋值运算符"></a>2.6 拷贝构造和赋值运算符</h3><p>可以参考搜索二叉树，和之前的如出一辙</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Allen9012/article/details/124435568">https://blog.csdn.net/Allen9012/article/details/124435568</a></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205071453328.png" alt="image-20220507145354216"></p>
+<h3 id="2-7-CheckBalance"><a href="#2-7-CheckBalance" class="headerlink" title="2.7 CheckBalance"></a>2.7 CheckBalance</h3><p>我们需要写一个树来查一下我们的插入操作正不正确，是否插入形成了一个红黑树</p>
+<p>为了验证是否是红黑树，我们还是利用几点原则</p>
+<h4 id="2-7-1-黑色的根"><a href="#2-7-1-黑色的根" class="headerlink" title="2.7.1 黑色的根"></a>2.7.1 黑色的根</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//1.黑根</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">-&gt;</span>_col<span class="token operator">==</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"root是红色"</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-7-2-没有连续的红色节点"><a href="#2-7-2-没有连续的红色节点" class="headerlink" title="2.7.2 没有连续的红色节点"></a>2.7.2 没有连续的红色节点</h4><p>方法就是遍历，然后找到红色节点，去查找父亲是不是红色节点，如果是红色就返回false</p>
+<h4 id="2-7-3-每条路径上的黑色节点数量相等"><a href="#2-7-3-每条路径上的黑色节点数量相等" class="headerlink" title="2.7.3 每条路径上的黑色节点数量相等"></a>2.7.3 每条路径上的黑色节点数量相等</h4><p>前序遍历，从根节点走到每一个NIL节点，只要是黑色就count++，如果走到了NIL节点就return，然后此时上一层栈帧的++不影响其他层的count，于是可以实现</p>
+<ol>
+<li>用一个vector去记录每个路径的黑色接点数量，如果最后都是相等的，那么就是说明是红黑树</li>
+<li>不想要走完每条路线才最后比较，可不可以找一条路径作为标准，只要其他路和这条路线不相等就说明不是红黑树，可以找最左路径做黑色节点的参考值<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">_CheckBalance</span><span class="token punctuation">(</span>Node<span class="token operator">*</span>root<span class="token punctuation">,</span><span class="token keyword">int</span> black_num<span class="token punctuation">,</span><span class="token keyword">int</span> count<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">!=</span> black_num<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span><span class="token comment">//3.路径黑节点数相等</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"路径上黑色节点的数量不相等"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//2.遍历红节点，查父亲是不是红的，不要查孩子因为孩子可能没有</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_col<span class="token operator">==</span>RED <span class="token operator">&amp;&amp;</span> root<span class="token operator">-&gt;</span>_parent<span class="token operator">-&gt;</span>_col<span class="token operator">==</span>RED<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"存在连续的红色节点"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_col<span class="token operator">==</span>BLACK<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">_CheckBalance</span><span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_left<span class="token punctuation">,</span>black_num<span class="token punctuation">,</span>count<span class="token punctuation">)</span>
+                <span class="token operator">&amp;&amp;</span> <span class="token function">_CheckBalance</span><span class="token punctuation">(</span>root<span class="token operator">-&gt;</span>_right<span class="token punctuation">,</span>black_num<span class="token punctuation">,</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">bool</span>  <span class="token function">CheckBalance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">==</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//1.黑根</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_root<span class="token operator">-&gt;</span>_col<span class="token operator">==</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token string">"root是红色"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//2. 每条路径走到NIL节点，遇到黑++，找最左路径做黑色节点的参考值</span>
+    <span class="token keyword">int</span> black_num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    Node<span class="token operator">*</span> left <span class="token operator">=</span> _root<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>left<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token operator">-&gt;</span>_col<span class="token operator">==</span>BLACK<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            black_num<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        left <span class="token operator">=</span> left<span class="token operator">-&gt;</span>_left<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//count计算该条路的值</span>
+    <span class="token comment">//3. 用子函数来递归遍历</span>
+    <span class="token keyword">return</span> <span class="token function">_CheckBalance</span><span class="token punctuation">(</span>_root<span class="token punctuation">,</span>black_num<span class="token punctuation">,</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h2 id="3-红黑树-V-S-AVL树"><a href="#3-红黑树-V-S-AVL树" class="headerlink" title="3. 红黑树 V.S. AVL树"></a>3. 红黑树 V.S. AVL树</h2><p>红黑树和AVL树都是高效的平衡二叉树，增删改查的时间复杂度都是<br>$$<br>O(log_2N)<br>$$</p>
+<p>，红黑树不追求绝对平衡，其只需保证最长路径不超过最短路径的2倍，相对而言，降低了插入和旋转的次数，所以在经常进行增删的结构中性能比AVL树更优，而且红黑树实现比较简单，所以实际运用中红黑树更多。</p>
+<h2 id="红黑树的应用"><a href="#红黑树的应用" class="headerlink" title="红黑树的应用"></a>红黑树的应用</h2><ol>
+<li>C++ STL库 – map/set、mutil_map/mutil_set</li>
+<li>Java 库</li>
+<li>linux内核</li>
+<li>其他一些库</li>
+</ol>
+<p>相关代码放在了我的GitHub仓库<a target="_blank" rel="noopener" href="https://github.com/Allen9012/cpp/tree/main/C++%E8%BF%9B%E9%98%B6/RBTree">https://github.com/Allen9012/cpp/tree/main/C%2B%2B%E8%BF%9B%E9%98%B6/RBTree</a></p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h3 id="关于AVL树和红黑树的区别说法不正确的是（）"><a href="#关于AVL树和红黑树的区别说法不正确的是（）" class="headerlink" title="关于AVL树和红黑树的区别说法不正确的是（）"></a>关于AVL树和红黑树的区别说法不正确的是（）</h3><p>A.AVL树和红黑树保证平衡性的方式不同</p>
+<p>B.AVL树和红黑树都是平衡树，因此查找的时间复杂度都是O(log_2N)</p>
+<p>C.AVL树和红黑树的性质遭到破坏时，都需要进行旋转</p>
+<p>D.AVL树和红黑树中序遍历都可以得到有序序列，因为它们都是二叉搜索树</p>
+<blockquote>
+<p> A：正确，AVL树通过节点的平衡因子保证，红黑树通过节点的颜色以及红黑树的特性保证</p>
+<p> B：正确，AVL树是严格平衡的，红黑树虽然是近似平衡，但其性能往往比AVL树好，而且实现简 单，因此他们的查找  效率都是O(logN)</p>
+<p> C：错误，AVL树是一定需要旋转，红黑树不一定，红黑树有时只需要改变节点的颜色即可</p>
+<p> D：正确，参考概念</p>
+<p> 因此：选择C</p>
+</blockquote>
+<h3 id="关于红黑树以下说法正确的是（）"><a href="#关于红黑树以下说法正确的是（）" class="headerlink" title="关于红黑树以下说法正确的是（）"></a>关于红黑树以下说法正确的是（）</h3><p>A.空树不是红黑树，因为红黑树要求根节点必须为黑色，而空树中没有根节点</p>
+<p>B.红黑树也是二叉搜索树，因此其按照前序遍历可以得到有序序列</p>
+<p>C.红黑树是一棵真正平衡的二叉树</p>
+<p>D.红黑树最长路径中节点个数可能会等于最短路径中节点个数的两倍</p>
+<blockquote>
+<p> A：错误，空树也是红黑树，性质5中规定树中的空指针域为叶子节点，因此空树也是有节点的</p>
+<p> B：错误，红黑树也是二叉搜索树，按照中序遍历才可以得到有序序列</p>
+<p> C：红黑树不像AVL树那么严格，是一棵近似平衡的二叉搜索树</p>
+<p> D：正确，比如红黑树中只有两个节点</p>
+<p> 因此：选择D</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/BlogNet/about" rel="external nofollow noreferrer">Allen</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://allen9012.github.io/BlogNet/BlogNet/2022/09/03/Red-Black-Tree/">https://allen9012.github.io/BlogNet/BlogNet/2022/09/03/Red-Black-Tree/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/BlogNet/about" target="_blank">Allen</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/BlogNet/tags/%E9%AB%98%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">高阶数据结构</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/BlogNet/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/BlogNet/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/BlogNet/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/BlogNet/2022/09/03/Red-Black-Tree/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/BlogNet/medias/featureimages/5.jpg" class="responsive-img" alt="Red-Black Tree">
+                        
+                        <span class="card-title">Red-Black Tree</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Allen
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/BlogNet/tags/%E9%AB%98%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">高阶数据结构</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/BlogNet/2022/08/25/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/BlogNet/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Allen
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/BlogNet/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/BlogNet/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/BlogNet/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/BlogNet/about" target="_blank">Allen</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/BlogNet/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/BlogNet/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/BlogNet/libs/materialize/materialize.min.js"></script>
+    <script src="/BlogNet/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/BlogNet/libs/aos/aos.js"></script>
+    <script src="/BlogNet/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/BlogNet/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/BlogNet/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/BlogNet/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/BlogNet/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/BlogNet/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
