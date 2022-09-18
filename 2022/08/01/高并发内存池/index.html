@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Blog，coding">
+    <meta name="keywords" content="高并发内存池, Blog，coding">
     <meta name="description" content="言之命至">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Allen 的 blog</title>
+    <title>高并发内存池 | Allen 的 blog</title>
     <link rel="icon" type="image/png" href="/BlogNet/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/BlogNet/libs/awesome/css/all.css">
@@ -29,9 +29,9 @@
 
     <script src="/BlogNet/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
 </head>
 
 
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">高并发内存池</h1>
                 </div>
             </div>
         </div>
@@ -432,9 +432,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
+                                <span class="chip bg-color">项目</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -446,7 +450,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-05
+                    2022-08-01
                 </div>
                 
 
@@ -470,7 +474,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="高并发内存池"><a href="#高并发内存池" class="headerlink" title="高并发内存池"></a>高并发内存池</h1><p>[toc]</p>
+                <p>[toc]</p>
 <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>为了学习和提高设计能力，检验编程思想以及编程能力，以下开始学习并探究实现高并发内存池项目</p>
 <p>本项目实现的是一个高并发的内存池，它是Google的一个开源项目tcmalloc的迷你版，tcmalloc全称Thread-Caching Malloc，即线程缓存的malloc，实现了高效的多线程内存管理，用于替换系统的内存分配相关函数malloc和free。</p>
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202208211705700.png" alt="image-20220821170456564"></p>
@@ -3021,7 +3025,7 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://allen9012.github.io/BlogNet/BlogNet/2022/09/05/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/">https://allen9012.github.io/BlogNet/BlogNet/2022/09/05/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/</a>
+                    <a href="https://allen9012.github.io/BlogNet/BlogNet/2022/08/01/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/">https://allen9012.github.io/BlogNet/BlogNet/2022/08/01/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -3058,7 +3062,11 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
+                                    <span class="chip bg-color">项目</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -3230,13 +3238,13 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/BlogNet/2022/09/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                <a href="/BlogNet/2022/08/25/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/BlogNet/medias/featureimages/7.jpg" class="responsive-img" alt="八大排序算法">
+                        <img src="/BlogNet/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">八大排序算法</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -3247,7 +3255,7 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -3258,30 +3266,22 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                     </div>
                 </div>
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/BlogNet/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">数据结构和算法</span>
-                    </a>
-                    
-                </div>
-                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/BlogNet/2022/09/04/Hash-%E5%AE%B9%E5%99%A8/">
+                <a href="/BlogNet/2022/08/01/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/BlogNet/medias/featureimages/15.jpg" class="responsive-img" alt="Hash 容器">
+                        <img src="/BlogNet/medias/featureimages/14.jpg" class="responsive-img" alt="高并发内存池">
                         
-                        <span class="card-title">Hash 容器</span>
+                        <span class="card-title">高并发内存池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -3292,7 +3292,7 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-01
                             </span>
                         <span class="publish-author">
                             
@@ -3302,11 +3302,12 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/BlogNet/tags/%E9%AB%98%E9%98%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Hash/">
-                        <span class="chip bg-color">高阶数据结构 Hash</span>
+                    <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
+                        <span class="chip bg-color">项目</span>
                     </a>
                     
                 </div>
