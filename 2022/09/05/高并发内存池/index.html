@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="高并发内存池, Blog，coding">
+    <meta name="keywords" content="Blog，coding">
     <meta name="description" content="言之命至">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>高并发内存池 | Allen 的 blog</title>
+    <title>Allen 的 blog</title>
     <link rel="icon" type="image/png" href="/BlogNet/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/BlogNet/libs/awesome/css/all.css">
@@ -29,9 +29,9 @@
 
     <script src="/BlogNet/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
 </head>
 
 
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">高并发内存池</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -432,13 +432,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
-                                <span class="chip bg-color">项目</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -1726,7 +1722,7 @@ Span<span class="token operator">*</span> span <span class="token operator">=</s
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031321235.png" alt="image-20220903132126164"></p>
 <p>当该线程第二次申请8字节大小的对象时，此时thread cache的0号桶中还是没有对象的，因为第一次thread cache只向central cache申请了一个8字节对象，因此这次申请时还需要再向central cache申请对象。</p>
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031321361.png" alt="image-20220903132142288"></p>
-<p>这时thread cache向central cache申请对象时，thread cache第0号桶中自由链表的_maxSize已经慢增长到2了，所以这次在向central cache申请对象时就会申请2个。如果下一次thread cache再向central cache申请8字节大小的对象，那么central cache会一次性给thread cache3个，这就是所谓的慢增长。<br><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209051642240.png" alt="image-20220903132223411"></p>
+<p>这时thread cache向central cache申请对象时，thread cache第0号桶中自由链表的_maxSize已经慢增长到2了，所以这次在向central cache申请对象时就会申请2个。如果下一次thread cache再向central cache申请8字节大小的对象，那么central cache会一次性给thread cache3个，这就是所谓的慢增长。<br><img src="C:/Users/Allen/AppData/Roaming/Typora/typora-user-images/image-20220903132223411.png" alt="image-20220903132223411"></p>
 <p>但由于第一次central cache向page cache申请了一页的内存块，并将其切成了1024个8字节大小的对象，因此这次thread cache向central cache申请2两个8字节的对象时，central cache的第0号桶当中是有对象的，直接返回两个给thread cache即可，而不用再向page cache申请内存了。</p>
 <p>但线程实际申请的只是一个8字节对象，因此thread cache除了将一个对象返回之外，还需要将剩下的一个对象挂到thread cache的第0号桶当中。<br><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031323856.png" alt="image-20220903132315784"></p>
 <p>这样一来，当线程第三次申请1字节的内存时，由于1字节对齐后也是8字节，此时thread cache也就不需要再向central cache申请内存块了，直接将第0号桶当中之前剩下的一个8字节对象返回即可。</p>
@@ -1942,7 +1938,7 @@ Span<span class="token operator">*</span> span <span class="token operator">=</s
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注意一下，当我们要通过某个页号查找其对应的span时，该页号与其span之间的映射一定是建立过的，如果此时我们没有在unordered_map当中找到，则说明我们之前的代码逻辑有问题，因此当没有找到对应的span时可以直接用断言结束程序，以表明程序逻辑出错。</p>
-<h3 id="ReleaseListToSpans"><a href="#ReleaseListToSpans" class="headerlink" title="ReleaseListToSpans"></a>ReleaseListToSpans</h3><p>这时当thread cache还对象给central cache时，就可以依次遍历这些对象，将这些对象插入到其对应span的自由链表当中，并且及时更新该span的_usseCount计数即可。</p>
+<h3 id="ReleaseListToSpans"><a href="#ReleaseListToSpans" class="headerlink" title="ReleaseListToSpans"></a>ReleaseListToSpans</h3><p>这时当thread cache还对象给central cache时，就可以依次遍历这些对象，将这些对象插入到其对应span的自由链表当中，并且及时更新该span的_useCount计数即可。</p>
 <p>在thread cache还对象给central cache的过程中，如果central cache中某个span的_useCount减到0时，说明这个span分配出去的对象全部都还回来了，那么此时就可以将这个span再进一步还给page cache。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">CentralCache</span><span class="token double-colon punctuation">::</span><span class="token function">ReleaseListToSpans</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> start<span class="token punctuation">,</span> size_t size<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
@@ -2978,6 +2974,14 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
 <p>可以看到，这时就算申请释放的是固定大小的对象，其效率还是不太行</p>
 <p>下面在申请释放不同大小的对象时，由于central cache的桶锁起作用了，其效率更是变成了malloc的好几倍。</p>
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209051610479.png" alt="image-20220905161032404"></p>
+<p>这肯定还是不对的，所以查找一下原因试试看</p>
+<p>首先看看锁的问题，应该是比较容易看出来的</p>
+<p>下面性能分析发现Free和Alloc都是很慢的，说明肯定是alloc的时候有问题，导致了整体的时候慢下来了</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209051930134.png" alt="image-20220905193025051"></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209051926113.png" alt="image-20220905192641730"></p>
+<p>这导致了慢开始算法出错，每次都让第一个桶增长，而不会影响其他的桶</p>
+<p>这次可以了</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209051931940.png" alt="image-20220905193156857"></p>
 <h2 id="打包成动静态库"><a href="#打包成动静态库" class="headerlink" title="打包成动静态库"></a>打包成动静态库</h2><p>实际Google开源的tcmalloc是会直接用于替换malloc的，不同平台替换的方式不同。比如基于Unix的系统上的glibc，使用了weak alias的方式替换；而对于某些其他平台，需要使用hook的钩子技术来做。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span><span class="token operator">*</span> <span class="token function">malloc</span><span class="token punctuation">(</span>size_t size<span class="token punctuation">)</span> THROW <span class="token function">attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">alias</span> <span class="token punctuation">(</span>tc_malloc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -3054,11 +3058,7 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
-                                    <span class="chip bg-color">项目</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -3226,18 +3226,17 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/BlogNet/2022/09/05/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/">
+                <a href="/BlogNet/2022/09/18/%E5%85%AB%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/BlogNet/medias/featureimages/14.jpg" class="responsive-img" alt="高并发内存池">
+                        <img src="/BlogNet/medias/featureimages/7.jpg" class="responsive-img" alt="八大排序算法">
                         
-                        <span class="card-title">高并发内存池</span>
+                        <span class="card-title">八大排序算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -3247,9 +3246,9 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -3258,12 +3257,11 @@ Span<span class="token operator">*</span> <span class="token class-name">PageCac
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
-                        <span class="chip bg-color">项目</span>
+                    <a href="/BlogNet/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">数据结构和算法</span>
                     </a>
                     
                 </div>
