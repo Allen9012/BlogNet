@@ -1,0 +1,1567 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="类和对象上, Blog，coding">
+    <meta name="description" content="言之命至">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>类和对象上 | Allen 的 blog</title>
+    <link rel="icon" type="image/png" href="/BlogNet/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/BlogNet/css/my.css">
+
+    <script src="/BlogNet/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/BlogNet/atom.xml" title="Allen 的 blog" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/BlogNet/" class="waves-effect waves-light">
+                    
+                    <img src="/BlogNet/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Allen 的 blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/BlogNet/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/BlogNet/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Allen 的 blog</div>
+        <div class="logo-desc">
+            
+            言之命至
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/BlogNet/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/BlogNet/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">类和对象上</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/BlogNet/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/BlogNet/tags/C-%E5%88%9D%E9%98%B6/">
+                                <span class="chip bg-color">C++初阶</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-09-21
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/BlogNet/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261926518.png" alt="image-20220127141441212"></p>
+<h1 id="类和this"><a href="#类和this" class="headerlink" title="类和this"></a>类和this</h1><p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261926180.png" alt="image-20220206095118501"></p>
+<p>由于已经学习过Java中的类与对象，类似的部分就不再写进博客，只记录下不同之处和精华之处</p>
+<p>[toc]</p>
+<h2 id="类的引入"><a href="#类的引入" class="headerlink" title="类的引入"></a>类的引入</h2><p>Java中的类有Class来表示</p>
+<p>C++中的类怎么引入呢？</p>
+<p>首先回顾C语言如何引入数据结构中的栈</p>
+<blockquote>
+<p>函数方法 – 数据和方法是分离的，重点关注的是过程(函数方法)</p>
+</blockquote>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">Stack</span>
+<span class="token punctuation">{</span>
+	STDataType<span class="token operator">*</span> a<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> size<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> capacity<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 函数方法 -- 数据和方法是分离的，重点关注的是过程-》函数方法</span>
+<span class="token keyword">void</span> <span class="token function">StackPush</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">Stack</span><span class="token operator">*</span> ps<span class="token punctuation">,</span> STDataType x<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>C++的类则是创建新的类型，和Java一样还是由成员变量，或者叫字段和成员函数</p>
+<blockquote>
+<p>C++中的struct兼容C中的结构体，也把struct升级成了类</p>
+</blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">Stack</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token keyword">int</span> initSize <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token comment">//缺省参数</span>
+	<span class="token punctuation">{</span>
+		a <span class="token operator">=</span> <span class="token punctuation">(</span>STDataType<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>STDataType<span class="token punctuation">)</span> <span class="token operator">*</span> initSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		capacity <span class="token operator">=</span> initSize<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">void</span> <span class="token function">Push</span><span class="token punctuation">(</span>STDataType x<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">// ...</span>
+		a<span class="token punctuation">[</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+		size<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	STDataType<span class="token operator">*</span> a<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> size<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> capacity<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>需要使用的时候就可以直接</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Stack st<span class="token punctuation">;</span>
+st<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+st<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+st<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+st<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>不过C++定义类的时候更喜欢用class，class和struct其实定义的都是类</p>
+<h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">className</span>
+<span class="token punctuation">{</span>
+<span class="token comment">// 类体：由成员函数和成员变量组成</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 一定要注意后面的分号</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>class为定义类的关键字，ClassName为类的名字，{}中为类的主体，注意类定义结束时后面分号。<br>类中的元素称为类的成员：类中的数据称为类的属性或者成员变量; 类中的函数称为类的方法或者成员函数。</p>
+</blockquote>
+<h3 id="两种类定义方法"><a href="#两种类定义方法" class="headerlink" title="两种类定义方法"></a>两种类定义方法</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261926077.png" alt="image-20220126201328890"></p>
+<p>一般，由于成员属性都是在声明，而如果成员函数也应该只声明不定义，这样就比较符合规范，所以我们最好把定义的部分放到cpp文件中，把声明文件放到头文件中，然后若要cpp文件中定义这些类的函数的话，就把于加上去就可以了，比如下面</p>
+<blockquote>
+<p>Stack.h</p>
+</blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">Stack</span>
+<span class="token keyword">class</span> <span class="token class-name">Stack</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">void</span> <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token keyword">int</span> initSize <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">void</span> <span class="token function">Push</span><span class="token punctuation">(</span>STDataType x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// ...</span>
+	STDataType<span class="token operator">*</span> a<span class="token punctuation">;</span> <span class="token comment">// 成员变量在这里是声明</span>
+	<span class="token keyword">int</span> size<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> capacity<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>Stack.cpp</p>
+</blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">Stack</span><span class="token double-colon punctuation">::</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token keyword">int</span> initSize<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	a <span class="token operator">=</span> <span class="token punctuation">(</span>STDataType<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>STDataType<span class="token punctuation">)</span> <span class="token operator">*</span> initSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	capacity <span class="token operator">=</span> initSize<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token class-name">Stack</span><span class="token double-colon punctuation">::</span><span class="token function">Push</span><span class="token punctuation">(</span>STDataType x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token comment">// ...</span>
+	a<span class="token punctuation">[</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	size<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>还有一种方法就是把声明和定义全部放在类体中，需要注意：成员函数如果__在类中定义__，编译器可能会将其__当成内联函数__处理。(超过十行太多就不自动展开成内联函数了)</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261926783.png" alt="image-20220126201316137"></p>
+<h3 id="类的成员变量命名"><a href="#类的成员变量命名" class="headerlink" title="类的成员变量命名"></a>类的成员变量命名</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> _year<span class="token punctuation">;</span> <span class="token comment">// 年</span>
+<span class="token keyword">int</span> _month<span class="token punctuation">;</span> <span class="token comment">// 月</span>
+<span class="token keyword">int</span> _day<span class="token punctuation">;</span> <span class="token comment">// 日</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在成员变量前加一个<code>_</code>，一般表示成员变量，不是表示private变量，有些公司就会加一个m，具体看公司要求</p>
+<h2 id="类的访问限定符"><a href="#类的访问限定符" class="headerlink" title="类的访问限定符"></a>类的访问限定符</h2><p>java 提供四种访问控制修饰符号，用于控制方法和属性(成员变量)的访问权限（范围）:<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 公开级别:用public 修饰,对外公开<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 受保护级别:用protected 修饰,对子类和同一个包中的类公开<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 默认级别:没有修饰符号,向同一个包的类公开.<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 私有级别:用private 修饰,只有类本身可以访问,不对外公开<br><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261926660.png" alt="image-20220126202053335"></p>
+<p>而C++中这些限制符有不同的含义</p>
+<p><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> public修饰的成员在类外可以直接被访问<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> protected和private修饰的成员在类外不能直接被访问(此处protected和private是类似的)<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 访问权限作用域从该访问限定符出现的位置开始直到下一个访问限定符出现时为止<br><span class="github-emoji"><span>🌿</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> class的默认访问权限为private，struct为public(因为struct要兼容C)</p>
+<blockquote>
+<p>注意：访问限定符只在编译时有用，当数据映射到内存后，没有任何访问限定符上的区别</p>
+</blockquote>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927348.png" alt="image-20220126201849869"></p>
+<h3 id="C-中struct和class的区别是什么？"><a href="#C-中struct和class的区别是什么？" class="headerlink" title="C++中struct和class的区别是什么？"></a>C++中struct和class的区别是什么？</h3><p>C++需要兼容C语言，所以C++中struct可以当成结构体去使用。另外C++中struct还可以用来定义类。<br>和class是定义类是一样的，区别是struct的成员默认访问方式是public，class是struct的成员默认访问方式<br>是private。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p><span alt="underline">封装：将数据和操作数据的方法进行有机结合，隐藏对象的属性和实现细节，仅对外公开接口来和对象进行</span><br>交互。</p>
+<p>封装本质上是一种管理：我们如何管理兵马俑呢？比如如果什么都不管，兵马俑就被随意破坏了。那么我们<br>首先建了一座房子把兵马俑给封装起来。但是我们目的全封装起来，不让别人看。所以我们开放了售票通<br>道，可以买票突破封装在合理的监管机制下进去参观。类也是一样，我们使用类数据和方法都封装到一下。<br>不想给别人看到的，我们使用protected/private把成员封装起来。开放一些共有的成员函数对成员合理的访<br>问。所以封装本质是一种管理。</p>
+<blockquote>
+<p>这里的封装和Java的本质差不多</p>
+</blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"> <span class="token comment">//在类设计中，一般情况，想给别人的(成员函数)访问定义成共有</span>
+ <span class="token comment">//                      不想给别人访问(成员变量)的就定义成私有或保护</span>
+<span class="token keyword">struct</span> <span class="token class-name">Stack</span>
+<span class="token keyword">class</span> <span class="token class-name">Stack</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">void</span> <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token keyword">int</span> initSize <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">void</span> <span class="token function">Push</span><span class="token punctuation">(</span>STDataType x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// ...</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+	STDataType<span class="token operator">*</span> a<span class="token punctuation">;</span> <span class="token comment">// 成员变量在这里是声明</span>
+	<span class="token keyword">int</span> size<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> capacity<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>封装好还是不分装好？</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927880.png" alt="image-20220126203131881"></p>
+<p>封装更好更规范</p>
+<h2 id="类的作用域"><a href="#类的作用域" class="headerlink" title="类的作用域"></a>类的作用域</h2><blockquote>
+<p>类定义了一个新的作用域，类的所有成员都在类的作用域中。在类体外定义成员，需要使用 :: 作用域解析符指明成员属于哪个类域。</p>
+</blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Person</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">PrintPersonInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+	<span class="token keyword">char</span> _name<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">char</span> _gender<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> _age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 这里需要指定PrintPersonInfo是属于Person这个类域</span>
+<span class="token keyword">void</span> <span class="token class-name">Person</span><span class="token double-colon punctuation">::</span><span class="token function">PrintPersonInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	cout <span class="token operator">&lt;&lt;</span> _name <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span>_gender <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> _age <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="类的实例化"><a href="#类的实例化" class="headerlink" title="类的实例化"></a>类的实例化</h2><p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927972.png" alt="image-20220126203620631"></p>
+<p><strong>用类类型创建对象的过程，称为类的实例化</strong></p>
+<p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 类只是一个模型一样的东西，限定了类有哪些成员，定义出一个类并没有分配实际的内存空间来存储它<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 一个类可以实例化出多个对象，实例化出的对象 占用实际的物理空间，存储类成员变量<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 做个比方。类实例化出对象就像现实中使用建筑设计图建造出房子，类就像是设计图，只设计出需要什么东西，但是并没有实体的建筑存在，同样类也只是一个设计，实例化出的对象才能实际存储数据，占用物理空间</p>
+<h2 id="类对象模型"><a href="#类对象模型" class="headerlink" title="类对象模型"></a>类对象模型</h2><h3 id="计算类对象大小"><a href="#计算类对象大小" class="headerlink" title="计算类对象大小"></a>计算类对象大小</h3><p>对于成员属性是很好计算的，有内存对齐，但是方法如何计算，这里比较特殊，这些方法函数被放在了一个公共的代码段中，可以多次调用，不用多次创建</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927258.png" alt="image-20220126204117929"></p>
+<p>那么现在看类的大小其实就和结构体一样了，参考之前的内存对齐</p>
+<p>下面看两个例子总结特殊情况</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">A1</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+	<span class="token keyword">int</span> _a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 类中仅有成员函数</span>
+<span class="token keyword">class</span> <span class="token class-name">A2</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 空类</span>
+<span class="token keyword">class</span> <span class="token class-name">A3</span>
+<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>A1<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	A1 aa<span class="token punctuation">;</span>
+	aa<span class="token punctuation">.</span><span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 他们的大小是1，为什么呢？ 大小是1，给1个byte不是为了存储数据，是占位，表示对象存在过</span>
+	A2 a2<span class="token punctuation">;</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	A3 a3<span class="token punctuation">;</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>a3<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>这段代码中的A3和A2都是没有成员属性的类，他们的大小都不是0而是1</strong></p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927604.png" alt="image-20220126204703459"></p>
+<p>就是为了他们的大小是1，为什么呢？ 大小是1，给1个byte不是为了存储数据，是占位，表示对象存在过，为了区分不同的对象，毕竟，不给空间不能表示存在过</p>
+</blockquote>
+<h3 id="结构体内存对齐规则"><a href="#结构体内存对齐规则" class="headerlink" title="结构体内存对齐规则"></a>结构体内存对齐规则</h3><ol>
+<li>第一个成员在与结构体偏移量为0的地址处。</li>
+<li>其他成员变量要对齐到某个数字（对齐数）的整数倍的地址处。</li>
+<li>注意：对齐数 = 编译器默认的一个对齐数 与 该成员大小的较小值。<br>VS中默认的对齐数为8</li>
+<li>结构体总大小为：最大对齐数（所有变量类型最大者与默认对齐参数取最小）的整数倍。</li>
+<li>如果嵌套了结构体的情况，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。</li>
+</ol>
+<p>【面试题】</p>
+<ol>
+<li>结构体怎么对齐？ 为什么要进行内存对齐</li>
+</ol>
+<blockquote>
+<p>在计算机系统中，规定：每个地址单元都会对应一个字节（8个bit），但是，在c语言中，除了有一个字节（8个bit）的char，也有两个字节（16个bit）的short，也有四个字节（32个bit）的long（在不同的编译器下可能不同）。对于16位或者32位的处理器，即就是大于8位的处理器，由于寄存器的宽度大于一个字节，那么就存在如何将一个多字节的变量的数据如何存放的问题——所以，就有了大小端之分。</p>
+</blockquote>
+<ol start="2">
+<li>如何让结构体按照指定的对齐参数进行对齐</li>
+</ol>
+<blockquote>
+<p>参考shang’mian</p>
+</blockquote>
+<ol start="3">
+<li>什么是大小端？如何测试某台机器是大端还是小端，有没有遇到过要考虑大小端的场景</li>
+</ol>
+<blockquote>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">cheak_sys</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">cheak_sys</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">union</span> Un
+	<span class="token punctuation">{</span>
+		<span class="token keyword">char</span> c<span class="token punctuation">;</span>
+		<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>u<span class="token punctuation">;</span>
+	u<span class="token punctuation">.</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> u<span class="token punctuation">.</span>c<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">int</span> ret <span class="token operator">=</span> <span class="token function">cheak_sys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">==</span> ret<span class="token punctuation">)</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"小端\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">else</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"大端\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//如果返回1，表示小端</span>
+	<span class="token comment">//如果返回0，表示大端</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><h3 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h3><h4 id="Java中的this"><a href="#Java中的this" class="headerlink" title="Java中的this"></a>Java中的this</h4><p>Java中也有<br>构造器中会用到this关键字，和C++不一样，一般是显式的<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this 关键字可以用来访问本类的属性、方法、构造器<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this 用于区分当前类的属性和局部变量<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 访问成员方法的语法：this.方法名(参数列表);<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 访问构造器语法：this(参数列表); 注意只能在构造器中使用(即只能在构造器中访问另外一个构造器, 必须放在第一条语句)<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this 不能在类定义的外部使用，只能在类定义的方法中使用。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>那C++中呢？</p>
+<h4 id="C-中的this"><a href="#C-中的this" class="headerlink" title="C++中的this"></a>C++中的this</h4><p>这里我们先试着引入Date类</p>
+<p>C++中this指针是隐藏的，但是为了区别和保证语法的合法，我们在命名的时候要保证凡是命名成员变量的时候，尽量命名风格标准化比如下面的例子中的样子</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Date</span><span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">Init</span><span class="token punctuation">(</span><span class="token keyword">int</span> year<span class="token punctuation">,</span> <span class="token keyword">int</span> month<span class="token punctuation">,</span> <span class="token keyword">int</span> day<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">// 成员函数中，成员前面编译器会自动加this-&gt;，显示加也可以</span>
+		_year <span class="token operator">=</span> year<span class="token punctuation">;</span>
+		_month <span class="token operator">=</span> month<span class="token punctuation">;</span>
+		_day <span class="token operator">=</span> day<span class="token punctuation">;</span>
+        <span class="token comment">//也可以显示this指针</span>
+		<span class="token keyword">this</span><span class="token operator">-&gt;</span>_year <span class="token operator">=</span> year<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token operator">-&gt;</span>_month <span class="token operator">=</span> month<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token operator">-&gt;</span>_day <span class="token operator">=</span> day<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+	<span class="token comment">// 凡是成员变量，建议命名风格区分一下</span>
+	<span class="token keyword">int</span> _year<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> _month<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> _day<span class="token punctuation">;</span>
+	<span class="token comment">// 其他风格</span>
+	<span class="token comment">//int year_;</span>
+	<span class="token comment">//int m_year;</span>
+	<span class="token comment">//int mYear;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这就体现了封装的好处的体现，使用者不能直接改成员属性，只能赋值，而且我可以在初始化函数中保证好，比如说日期合法化，判断day必须要&gt;0什么的</p>
+<blockquote>
+<p><span class="github-emoji"><span>🌸</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f338.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> Date类中有SetDate与Display两个成员函数，函数体中没有关于不同对象的区分，那当s1调用SetDate函数时，该函数是如何知道应该设置s1对象，而不是设置s2对象呢？<br><span class="github-emoji"><span>🌸</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f338.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> C++中通过引入this指针解决该问题，即：C++编译器给每个“非静态的成员函数“增加了一个隐藏的指针参数，让该指针指向当前对象(函数运行时调用该函数的对象)，在函数体中所有成员变量的操作，都是通过该指针去访问。只不过所有的操作对用户是透明的，即用户不需要来传递，编译器自动完成。</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927570.png" alt="image-20220127132425981"></p>
+<p><span alt="rainbow">这就很妙</span>，证明一下</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	Date d1<span class="token punctuation">;</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"d1:"</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>d1 <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	d1<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token number">2021</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// d1.Init(&amp;d1, 2021, 5, 24);</span>
+
+	Date d2<span class="token punctuation">;</span>
+	cout <span class="token operator">&lt;&lt;</span> <span class="token string">"d2:"</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>d2 <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	d2<span class="token punctuation">.</span><span class="token function">Init</span><span class="token punctuation">(</span><span class="token number">2021</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// d2.Init(&amp;d2, 2021, 5, 25)</span>
+
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927305.png" alt="image-20220127133244218"></p>
+</blockquote>
+<h3 id="this指针快速入门"><a href="#this指针快速入门" class="headerlink" title="this指针快速入门"></a>this指针快速入门</h3><p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this指针的类型：类类型<code>* const</code><br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 只能在“成员函数”的内部使用<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this指针本质上其实是一个成员函数的形参，是对象调用成员函数时，将对象地址作为实参传递给this形参。所以对象中不存储this指针。<br><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this指针是成员函数第一个隐含的指针形参，一般情况由编译器通过ecx寄存器自动传递，不需要用户传递</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202205240951842.png" alt="image-20220127132248146"></p>
+<h3 id="两个有趣的问题"><a href="#两个有趣的问题" class="headerlink" title="两个有趣的问题"></a>两个有趣的问题</h3><p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this指针存在哪里？</p>
+<p>this一般是存在栈上的，不同的编译器不同，vs是使用ecx寄存器存储</p>
+<p><span class="github-emoji"><span>🍁</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> this指针可以为空吗？</p>
+<p>看看下面这道题</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+	<span class="token keyword">void</span> <span class="token function">PrintA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		cout <span class="token operator">&lt;&lt;</span> _a <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> 
+	<span class="token keyword">void</span> <span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Show()"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+	<span class="token keyword">int</span> _a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	A<span class="token operator">*</span> p <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+	p<span class="token operator">-&gt;</span><span class="token function">PrintA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 空指针</span>
+	p<span class="token operator">-&gt;</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 正常运行</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>首先并没有报错</p>
+<p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202203261927660.png" alt="image-20220127135827513"></p>
+<p>但是在	<code>p-&gt;PrintA(); // 空指针</code>调用的时候是this访问了空指针</p>
+<p>可以访问show()函数，但是不可以访问调用了成员属性的函数PrintA()，毕竟这里对this-&gt;_a产生了解引用</p>
+</blockquote>
+<blockquote>
+<p>本章主要讨论了Cpp中类的几个特点，和this指针，下一章会主要谈谈类的6个默认生成的函数</p>
+<p>兄弟们干净又卫生</p>
+</blockquote>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h3 id="下列有关this指针使用方法的叙述正确的是（-）"><a href="#下列有关this指针使用方法的叙述正确的是（-）" class="headerlink" title="下列有关this指针使用方法的叙述正确的是（ ）"></a>下列有关this指针使用方法的叙述正确的是（ ）</h3><p><strong>作业内容</strong></p>
+<p>A.保证基类保护成员在子类中可以被访问</p>
+<p>B.保证基类私有成员在子类中可以被访问</p>
+<p>C.保证基类公有成员在子类中可以被访问</p>
+<p>D.保证每个对象拥有自己的数据成员，但共享处理这些数据的代码</p>
+<blockquote>
+<p>D</p>
+</blockquote>
+<h3 id="下面描述错误的是"><a href="#下面描述错误的是" class="headerlink" title="下面描述错误的是( )"></a>下面描述错误的是( )</h3><p>A.this指针是非静态成员函数的隐含形参.</p>
+<p>B.每个非静态的成员函数都有一个this指针.</p>
+<p>C.this指针是存在对象里面的.</p>
+<p>D.this指针可以为空</p>
+<blockquote>
+<p>C</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/BlogNet/about" rel="external nofollow noreferrer">Allen</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://allen9012.github.io/BlogNet/BlogNet/2022/09/21/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8A/">https://allen9012.github.io/BlogNet/BlogNet/2022/09/21/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8A/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/BlogNet/about" target="_blank">Allen</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/BlogNet/tags/C-%E5%88%9D%E9%98%B6/">
+                                    <span class="chip bg-color">C++初阶</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/BlogNet/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/BlogNet/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/BlogNet/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/BlogNet/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/BlogNet/2022/09/21/%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B8%8A/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/BlogNet/medias/featureimages/1.jpg" class="responsive-img" alt="类和对象上">
+                        
+                        <span class="card-title">类和对象上</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Allen
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/BlogNet/tags/C-%E5%88%9D%E9%98%B6/">
+                        <span class="chip bg-color">C++初阶</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/BlogNet/2022/09/18/Allen-s-OJ/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/BlogNet/medias/featureimages/13.jpg" class="responsive-img" alt="Allen&#39;s OJ">
+                        
+                        <span class="card-title">Allen&#39;s OJ</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Allen
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/BlogNet/tags/%E9%A1%B9%E7%9B%AE/">
+                        <span class="chip bg-color">项目</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/BlogNet/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/BlogNet/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/BlogNet/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/BlogNet/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/BlogNet/about" target="_blank">Allen</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/BlogNet/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/BlogNet/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/BlogNet/libs/materialize/materialize.min.js"></script>
+    <script src="/BlogNet/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/BlogNet/libs/aos/aos.js"></script>
+    <script src="/BlogNet/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/BlogNet/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/BlogNet/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/BlogNet/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/BlogNet/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/BlogNet/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
