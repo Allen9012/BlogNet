@@ -1726,7 +1726,7 @@ Span<span class="token operator">*</span> span <span class="token operator">=</s
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031321235.png" alt="image-20220903132126164"></p>
 <p>当该线程第二次申请8字节大小的对象时，此时thread cache的0号桶中还是没有对象的，因为第一次thread cache只向central cache申请了一个8字节对象，因此这次申请时还需要再向central cache申请对象。</p>
 <p><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031321361.png" alt="image-20220903132142288"></p>
-<p>这时thread cache向central cache申请对象时，thread cache第0号桶中自由链表的_maxSize已经慢增长到2了，所以这次在向central cache申请对象时就会申请2个。如果下一次thread cache再向central cache申请8字节大小的对象，那么central cache会一次性给thread cache3个，这就是所谓的慢增长。<br><img src="C:/Users/Allen/AppData/Roaming/Typora/typora-user-images/image-20220903132223411.png" alt="image-20220903132223411"></p>
+<p>这时thread cache向central cache申请对象时，thread cache第0号桶中自由链表的_maxSize已经慢增长到2了，所以这次在向central cache申请对象时就会申请2个。如果下一次thread cache再向central cache申请8字节大小的对象，那么central cache会一次性给thread cache3个，这就是所谓的慢增长。<br><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202210251615268.png" alt="image-20220903132223411"></p>
 <p>但由于第一次central cache向page cache申请了一页的内存块，并将其切成了1024个8字节大小的对象，因此这次thread cache向central cache申请2两个8字节的对象时，central cache的第0号桶当中是有对象的，直接返回两个给thread cache即可，而不用再向page cache申请内存了。</p>
 <p>但线程实际申请的只是一个8字节对象，因此thread cache除了将一个对象返回之外，还需要将剩下的一个对象挂到thread cache的第0号桶当中。<br><img src="https://cloudmage.oss-cn-shanghai.aliyuncs.com/img/202209031323856.png" alt="image-20220903132315784"></p>
 <p>这样一来，当线程第三次申请1字节的内存时，由于1字节对齐后也是8字节，此时thread cache也就不需要再向central cache申请内存块了，直接将第0号桶当中之前剩下的一个8字节对象返回即可。</p>
